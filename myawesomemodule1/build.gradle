@@ -1,0 +1,5 @@
+apply from: "$rootDir/gradle/library.gradle"
+dependencies {
+    implementation(customModulePath('myawesomemodule3'))
+    implementation(customModulePath('myawesomemodule2'))
+}

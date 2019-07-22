@@ -1,0 +1,6 @@
+apply from: "$rootDir/gradle/local-aar.gradle"
+
+includeIfEnabled(':app')
+includeIfEnabled(':myawesomemodule1')
+includeIfEnabled(':myawesomemodule2')
+includeIfEnabled(':myawesomemodule3')

@@ -1,0 +1,24 @@
+apply from: "$rootDir/gradle/local-aar-config.gradle"
+
+ext.includeAlways = { name, path = null ->
+    include(name)
+    if (path != null)
+        project(name).projectDir = new File(rootDir, path)
+}
+
+ext.includeIfEnabled = { name, path = null ->
+    if (ext.useAARForDevBuild) {
+        if (ext.inDevModules.contains(name))
+            includeAlways(name, path)
+    } else {
+        includeAlways(name, path)
+    }
+}
+
+ext.customModulePath = { moduleName ->
+    if (useAARForDevBuild && !inDevModules.contains(":$moduleName")) {
+        return "com.sample.localaar:$moduleName:SNAPSHOT-1.0"
+    } else {
+        return project(":$moduleName")
+    }
+}

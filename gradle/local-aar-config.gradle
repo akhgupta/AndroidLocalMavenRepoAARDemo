@@ -1,0 +1,10 @@
+// load local-aar properties if is found
+def propFile = file("${rootDir}/local.properties")
+if(!propFile.exists()) propFile.createNewFile()
+def props = new Properties()
+propFile.withInputStream { props.load(it) }
+ext.useAARForDevBuild = (hasProperty("useAARForDevBuild")) ? getProperty("useAARForDevBuild").toBoolean() : props.getProperty("useAARForDevBuild", "false").toBoolean()
+ext.inDevModules = [
+        ":app",
+        ":myawesomemodule1"
+]

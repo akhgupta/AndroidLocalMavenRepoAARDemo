@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AARApproachDemo</string>
+    <string name="hello_from_app_module">Hello from app module</string>
+</resources>
