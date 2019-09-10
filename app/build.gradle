@@ -31,5 +31,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation(customModulePath('myawesomemodule1'))
+    implementation(customModulePath(':myawesomemodule1'))
+    implementation(customModulePath(':myawesomemodule2'))
+    implementation(customModulePath(':myawesomemodule3'))
 }

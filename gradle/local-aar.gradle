@@ -16,9 +16,9 @@ ext.includeIfEnabled = { name, path = null ->
 }
 
 ext.customModulePath = { moduleName ->
-    if (useAARForDevBuild && !inDevModules.contains(":$moduleName")) {
-        return "com.sample.localaar:$moduleName:SNAPSHOT-1.0"
+    if (useAARForDevBuild && !inDevModules.contains("$moduleName")) {
+        return "${localAARPublishConfig.groupId}$moduleName:${localAARPublishConfig.version}"
     } else {
-        return project(":$moduleName")
+        return project("$moduleName")
     }
 }
