@@ -2,9 +2,11 @@
 
 #### Recommended for projects where we have more than one module.
 
+
+
 <br><br>
 
-## How to run this demo ?
+# How to run this demo ?
 
 <br>
 
@@ -23,32 +25,38 @@
 ### Specify dev modules to work on
 
 1. Add `useAARForDevBuild=true` in your `local.properties` (in your project's root directory)
-2. Open `gradle/local-aar-config.gradle` and specify modules on which you want to work in array `ext.inDevModules`. e.g.
+2. Also specify modules on which you want to work, e.g. it should look like this
 
   ```
-  ext.inDevModules = [
-                 ":app",
-                 ":myawesomemodule1"
-                 ]
+  useAARForDevBuild=true
+  modules=:app :myawesomemodule1 :myawesomemodule2
   ```
 
 3. Do gradle sync
 
-4. Once sync is complete, check Android View of project.
+4. Once sync is complete, check `Android View` of project in `Android Studio`
 
 5. That's it, you can try adding / removing modules names and syncing same.
 
 <br><br>
+## Demo Video
+https://www.youtube.com/watch?v=rNT9eS5pO-g
+<br><br><br>
 
-## How to integrate this approach in your app ?
+# How to integrate this approach in your app ?
 
-1. Specify local maven repo in your project root level `build.gradle`
+1. Add below in your project root level `build.gradle`
+```
+apply from: "$rootDir/gradle/local-aar-config.gradle"
+apply from: "$rootDir/gradle/local-aar.gradle"
+```
+2. Also, specify local maven repo in your project root level `build.gradle`
 
   ```
   maven {   url = "$rootDir/localMavenRepository"   }
   ```
 
-2. Add below files to root level `gradle` directory
+3. Add below files to root level `gradle` directory
 
   ```
   gradle/local-aar.gradle
@@ -56,13 +64,13 @@
   gradle/publish.gradle
   ```
 
-3. In your `settings.gradle`, add below
+4. In your `settings.gradle`, add below
 
   ```groovy
   apply from: "$rootDir/gradle/local-aar.gradle"
   ```
 
-4. In your `settings.gradle`, replace included modules entries like this for all modules. e.g. replace
+5. In your `settings.gradle`, replace included modules entries like this for all modules. e.g. replace
 
   ```groovy
   include ':awesomeModule1'
@@ -74,20 +82,20 @@
   includeIfEnabled(':awesomeModule1')
   ```
 
-5. In your **app** modules `build.gradle` files, add below
+6. In your **app** modules `build.gradle` files, add below
 
   ```groovy
   apply from: "$rootDir/gradle/local-aar.gradle"
   ```
 
-6. In your **library** modules `build.gradle` files, add below
+7. In your **library** modules `build.gradle` files, add below
 
   ```groovy
   apply from: "$rootDir/gradle/local-aar.gradle"
   apply from: "$rootDir/gradle/publish.gradle"
   ```
 
-7. Specify your dependencies path using `customModulePath` method in your `build.gradle` files. e.g. replace
+8. Specify your dependencies path using `customModulePath` method in your `build.gradle` files. e.g. replace
 
   ```groovy
   implementation project(path: ':myawesomemodule1')
@@ -99,5 +107,5 @@
   implementation(customModulePath('myawesomemodule1'))
   ```
 
-8. Add `/localMavenRepository` in your `.gitignore`
-9. Follow **How to run this demo section** for building with this approach.
+9. Add `/localMavenRepository` in your `.gitignore`
+10. Follow **How to run this demo section** for building with this approach.
