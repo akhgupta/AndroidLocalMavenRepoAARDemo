@@ -104,7 +104,7 @@ apply from: "$rootDir/gradle/local-aar.gradle"
    with
 
   ```groovy
-  implementation(customModulePath('myawesomemodule1'))
+  implementation(customModulePath(':myawesomemodule1'))
   ```
 
 9. Add `/localMavenRepository` in your `.gitignore`
