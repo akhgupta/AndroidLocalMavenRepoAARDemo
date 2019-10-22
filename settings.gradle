@@ -1,4 +1,4 @@
-apply from: "$rootDir/gradle/local-aar.gradle"
+apply from: "$rootDir/gradle/settings-helper.gradle"
 
 includeIfEnabled(':app')
 includeIfEnabled(':myawesomemodule1')

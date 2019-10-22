@@ -62,12 +62,13 @@ apply from: "$rootDir/gradle/local-aar.gradle"
   gradle/local-aar.gradle
   gradle/local-aar-config.gradle
   gradle/publish.gradle
+  gradle/settings-helper.gradle
   ```
 
 4. In your `settings.gradle`, add below
 
   ```groovy
-  apply from: "$rootDir/gradle/local-aar.gradle"
+  apply from: "$rootDir/gradle/settings-helper.gradle"
   ```
 
 5. In your `settings.gradle`, replace included modules entries like this for all modules. e.g. replace
