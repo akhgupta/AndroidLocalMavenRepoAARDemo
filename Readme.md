@@ -2,6 +2,9 @@
 
 #### Recommended for projects where we have more than one module.
 
+<br><br>
+## Detailed info here
+https://blog.gojekengineering.com/how-we-improved-performance-and-build-times-in-android-studio-306028166b79
 
 
 <br><br>
