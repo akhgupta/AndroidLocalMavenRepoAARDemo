@@ -7,10 +7,9 @@ ext.customModulePath = { moduleName ->
         return project("$moduleName")
     }
 }
-
-configurations.all {
-    resolutionStrategy.dependencySubstitution {
-        if (useAARForDevBuild) {
+if (useAARForDevBuild) {
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
             inDevModules.each { moduleName ->
                 substitute module("${localAARPublishConfig.groupId}$moduleName:${localAARPublishConfig.version}") with project(moduleName)
             }
