@@ -12,7 +12,7 @@ configurations.all {
     resolutionStrategy.dependencySubstitution {
         if (useAARForDevBuild) {
             inDevModules.each { moduleName ->
-                substitute module("${localAARPublishConfig.groupId}$moduleName:${localAARPublishConfig.version}") with project(moduleName)
+                substitute module("${localAARPublishConfig.groupId}$moduleName:${localAARPublishConfig.version}") using project(moduleName)
             }
         }
     }
